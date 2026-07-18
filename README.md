@@ -38,8 +38,6 @@ Fine-tuning d'un **Vision Transformer** pré-entraîné sur ImageNet, adapté à
 | ViT 224 | 98,0 % | 0,98 | 0,99 | 0,99 | 0,98 |
 | ViT 384 | **99,2 %** | 0,99 | 0,99 | 0,99 | 0,99 |
 
-Entraînement : ~13 min (224) et ~45 min (384) sur GPU T4.
-
 **Détection du surapprentissage** — sur le ViT 224, la training loss chute à 0,0003 à l'époque 3 tandis que la validation loss remonte (0,0251 → 0,0264). Le modèle mémorise au lieu de généraliser ; `load_best_model_at_end` conserve donc les poids de l'époque 2.
 
 ### Hors distribution — corpus externe (29 images collectées à la main)
@@ -140,15 +138,8 @@ detection-image-ia/
     └── comparaison_224_384.md
 ```
 
-Le notebook est organisé en deux parcours : **exécution complète** (sections 1-9, ~45 min) et **reprise de session** (section 0, ~1 min) qui recharge les artefacts persistés sur Drive.
+Le notebook est organisé en deux parcours : **exécution complète** (sections 1-9) et **reprise de session** (section 0) qui recharge les artefacts persistés sur Drive.
 
-## 🚀 Reproduire
-
-```bash
-git clone https://github.com/<utilisateur>/detection-image-ia.git
-```
-
-Ouvrir le notebook dans Google Colab, activer le GPU (*Exécution → Modifier le type d'exécution → T4*), puis dérouler les sections dans l'ordre. Le dataset se télécharge automatiquement depuis HuggingFace.
 
 ## 🛠️ Stack technique
 
@@ -161,7 +152,6 @@ Ouvrir le notebook dans Google Colab, activer le GPU (*Exécution → Modifier l
 Au-delà du classifieur, la démarche : mesurer honnêtement la généralisation plutôt que se satisfaire d'un score interne, diagnostiquer les échecs par l'explicabilité plutôt que les constater, formuler une hypothèse et la tester expérimentalement, et reconnaître les limites statistiques d'un résultat obtenu sur un petit échantillon.
 
 Un modèle à 99 % qui échoue à 63 % sur des données réelles n'est pas un bon modèle — c'est un point de départ correctement mesuré.
-
 ---
 
 *Projet personnel · [LinkedIn](https://linkedin.com/in/konan-gervais-n-guessan) · [GitHub](https://github.com/Gervais-59)*
