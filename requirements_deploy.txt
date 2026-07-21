@@ -1,0 +1,13 @@
+# Dependances d'inference — versions minimales pour laisser pip
+# resoudre selon la version de Python de l'environnement cible.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch>=2.4.0
+transformers>=4.44.0
+Pillow>=10.0.0
+numpy>=1.26.0
+
+# Serveur web
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9      # requis par FastAPI pour recevoir des fichiers
