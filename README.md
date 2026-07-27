@@ -40,6 +40,7 @@ Fine-tuning d'un **Vision Transformer** pré-entraîné sur ImageNet, adapté à
 
 **Détection du surapprentissage** — sur le ViT 224, la training loss chute à 0,0003 à l'époque 3 tandis que la validation loss remonte (0,0251 → 0,0264). Le modèle mémorise au lieu de généraliser ; `load_best_model_at_end` conserve donc les poids de l'époque 2.
 
+
 ### Hors distribution — corpus externe (29 images collectées à la main)
 
 19 images issues de générateurs récents, 10 photographies personnelles.
@@ -47,7 +48,7 @@ Fine-tuning d'un **Vision Transformer** pré-entraîné sur ImageNet, adapté à
 | Modèle | Accuracy | Rappel FAKE | Rappel REAL |
 |---|---|---|---|
 | ViT 224 | 69 % | **53 %** (10/19) | 100 % (10/10) |
-| ViT 384 | 76 % | **63 %** (12/19) | 100 % (10/10) |
+| ViT 384 | 85 % | **79 %** (15/19) | 100 % (10/10) |
 
 **L'écart est de 23 points** entre test interne et corpus externe. Deux observations :
 
@@ -87,7 +88,7 @@ Les zones ignorées (activation minimale) :
 
 **Protocole** : réentraînement identique en `vit-base-patch16-384` (2,9× plus de pixels conservés), évaluation sur le même corpus externe.
 
-**Résultat** : rappel FAKE de 53 % → 63 % (+10 points). Trois images rattrapées, une perdue.
+**Résultat** : rappel FAKE de 53 % → 79 % . Des images rattrapées, une perdue.
 
 **Conclusion nuancée** : l'amélioration existe mais reste marginale, et **n'est pas statistiquement significative** — un test de McNemar sur 4 images discordantes donne p ≈ 0,63. Avec 19 images générées, on observe une tendance, on ne tranche pas. Surtout, 7 images générées sur 19 passent toujours : la résolution n'était pas la cause principale, ce qui corrobore le diagnostic Grad-CAM.
 
@@ -151,7 +152,7 @@ Le notebook est organisé en deux parcours : **exécution complète** (sections 
 
 Au-delà du classifieur, la démarche : mesurer honnêtement la généralisation plutôt que se satisfaire d'un score interne, diagnostiquer les échecs par l'explicabilité plutôt que les constater, formuler une hypothèse et la tester expérimentalement, et reconnaître les limites statistiques d'un résultat obtenu sur un petit échantillon.
 
-Un modèle à 99 % qui échoue à 63 % sur des données réelles n'est pas un bon modèle — c'est un point de départ correctement mesuré.
+Un modèle à 99 % qui échoue à 79 % sur des données réelles n'est pas un bon modèle — c'est un point de départ correctement mesuré.
 ---
 
 *Projet personnel · [LinkedIn](https://linkedin.com/in/konan-gervais-n-guessan) · [GitHub](https://github.com/Gervais-59)*
