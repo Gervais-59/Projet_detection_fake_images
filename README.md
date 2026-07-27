@@ -2,7 +2,7 @@
 
 > Un classifieur qui distingue une photographie réelle d'une image générée par IA — **et une investigation sur les raisons de ses échecs**.
 
-**En bref** : 99 % d'accuracy sur le jeu de test interne, **76 % sur un corpus externe** constitué à la main. Cet écart de 23 points est le véritable objet de ce projet : le mesurer, le diagnostiquer par explicabilité, et tester expérimentalement les remèdes.
+**En bref** : 99 % d'accuracy sur le jeu de test interne, **79 % sur un corpus externe** constitué à la main. Cet écart de 23 points est le véritable objet de ce projet : le mesurer, le diagnostiquer par explicabilité, et tester expérimentalement les remèdes.
 
 ---
 
